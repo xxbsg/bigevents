@@ -19,13 +19,13 @@
         <div class="row spannel_list">
             <div class="col-sm-3 col-xs-6">
                 <div class="spannel">
-                    <em>10015</em><span>篇</span>
+                    <em id='callCount'>10015</em><span>篇</span>
                     <b>总文章数</b>
                 </div>
             </div>
             <div class="col-sm-3 col-xs-6">
                 <div class="spannel scolor01">
-                    <em>123</em><span>篇</span>
+                    <em id='cdayCount'>123</em><span>篇</span>
                     <b>日新增文章数</b>
                 </div>
             </div>
@@ -343,6 +343,16 @@
             };
             oColumn.setOption(oColumnopt);
 
+    </script>
+    <script>
+          //加载文章总数和日文章数
+          $.get('http://localhost:8000/admin/article_count',function(res){
+            // console.log(res);
+            $('#callCount').text(res.data.all_count)
+            $('#cdayCount').text(res.data.day_count)
+
+            
+        })
     </script>
 
 
