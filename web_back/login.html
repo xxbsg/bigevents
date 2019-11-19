@@ -9,6 +9,8 @@
     <link rel="stylesheet" type="text/css" href="css/reset.css">
     <link rel="stylesheet" type="text/css" href="css/iconfont.css">
     <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" href="./js/bootstrap/css/bootstrap.min.css">
+
 </head>
 
 <body>
@@ -23,14 +25,61 @@
             <form class="login_form">
                 <i class="iconfont icon-user"></i>
                 <i class="iconfont icon-key"></i>
-                <input type="text" class="input_txt" placeholder="邮箱/手机号">
-                <input type="password" class="input_pass" placeholder="密码">
-                <input type="submit" class="input_sub" value="登 录">
+                <input type="text" id='myname' class="input_txt" placeholder="邮箱/手机号">
+                <input type="password" id='mypwd' class="input_pass" placeholder="密码">
+                <input id='tijiao' type="submit" class="input_sub" value="登 录">
             </form>
         </div>
 
-    </div> 
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">小段提醒</h4>
+                </div>
+                <div class="modal-body" id='mycont'>
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="./js/jquery-1.12.4.min.js"></script>
+    <script src="./js/bootstrap/js/bootstrap.min.js"></script>
+    <script src="./js/untils/user.js"></script>
 
+    <script>
+
+        $('#tijiao').click(function (e) {
+            e.preventDefault()
+
+            var name = $('#myname').val().trim()
+            var pwd = $('#mypwd').val().trim()
+            if (name == '' || pwd == '') {
+                $('#mycont').text('不允许为空')
+                $('#myModal').modal('show')
+                return;
+            }
+
+            user.login(name, pwd, function (res) {
+                console.log(res);
+                if (res.code == 200) {
+                    location.href = './index.html'
+                } else {
+                    $('#mycont').text(res.msg)
+                    $('#myModal').modal('show')
+                }
+            })
+
+        })
+    </script>
 </body>
 
 </html>
