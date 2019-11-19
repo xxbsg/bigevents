@@ -1,5 +1,5 @@
 var user={
-    
+
     login:function(name,pwd,callback){
 
         $.post('http://localhost:8000/admin/login', { user_name: name, password: pwd }, function (res) {
@@ -7,6 +7,13 @@ var user={
 
         })
 
+    },
+    logout:function(callback){
+        $.post('http://localhost:8000/admin/logout',function(res){
+                callback(res)
+                
+            })
     }
+
 
 }
