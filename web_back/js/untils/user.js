@@ -19,7 +19,16 @@ var user = {
             callback(res)
 
         })
+    },
+    getcontentcount:function(callback){
+        $.get('http://localhost:8000/admin/article_count',function(res){
+            // console.log(res);
+            callback(res);
+
+            
+        })
     }
+
 
 
 }

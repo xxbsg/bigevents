@@ -108,7 +108,7 @@
         //加载当前用户信息
         user.getInfo(function(res){
             if (res.code == 200) {
-                console.log(res);
+                // console.log(res);
 
                 $('.userImg').prop('src', res.data.user_pic)
                 $('#userName').text(res.data.nickname)

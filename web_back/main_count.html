@@ -344,15 +344,13 @@
             oColumn.setOption(oColumnopt);
 
     </script>
+    <script src="./js/untils/user.js"></script>
     <script>
           //加载文章总数和日文章数
-          $.get('http://localhost:8000/admin/article_count',function(res){
-            // console.log(res);
+         user.getcontentcount(function(res){
             $('#callCount').text(res.data.all_count)
             $('#cdayCount').text(res.data.day_count)
-
-            
-        })
+         })
     </script>
 
 
