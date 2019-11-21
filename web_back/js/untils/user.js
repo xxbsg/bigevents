@@ -38,6 +38,13 @@ var user = {
         $.get(this.baseurl + '/admin/comment_count', function (res) {
            callback(res)
         })
+    },
+    //月新增文章数
+    getmonthcontentcount:function(callback){
+        $.get('http://localhost:8000/admin/month_article_count', function (res) {
+            // console.log(res);
+            callback(res)
+        })
     }
 
 
