@@ -269,14 +269,37 @@
         $.get('http://localhost:8000/admin/article_category_visit', function (res) {
             console.log(res);
             if (res.code == 200) {
-                zhuzhuangtu()
+                var types=res.data[0].all_count.map(function(item){
+                    return item.type
+                })
+                var months=res.data.map(function(item){
+                    return item.month
+                })
+                
+                var type_num0=res.data.map(function(item,index,arr){
+                    // for(var i=0;i<item.length;i++){
+                    //     var aa=arr.map(function(itt){
+                    //         return item.all_count[i].count
+                    //     })
+                    //     console.log(aa);
+                        
+                    // }
+                    return item.all_count[0].count
+                })
+                var type_num1=res.data.map(function(item,index,arr){
+                    return item.all_count[1].count
+                })
+
+                console.log(type_num1);
+                
+                zhuzhuangtu(type_num0,type_num1,types,months)
             }
 
         })
 
 
         //柱状图
-        function zhuzhuangtu() {
+        function zhuzhuangtu(type_num0,type_num1,types,months) {
             var oColumn = this.echarts.init(document.getElementById('column_show'));
             var oColumnopt =
             {
@@ -289,7 +312,8 @@
                     trigger: 'axis'
                 },
                 legend: {
-                    data: ['奇趣事', '会生活', '爱旅行', '趣美味'],
+                    // data: ['奇趣事', '会生活', '爱旅行', '趣美味'],//types
+                    data: types,
                     top: '40'
                 },
                 toolbox: {
@@ -306,7 +330,8 @@
                 xAxis: [
                     {
                         type: 'category',
-                        data: ['1月', '2月', '3月', '4月', '5月']
+                        // data: ['1月', '2月', '3月', '4月', '5月'],//months
+                        data: months
                     }
                 ],
                 yAxis: [
@@ -317,41 +342,43 @@
                 ],
                 series: [
                     {
-                        name: '奇趣事',
+                        name: types[0],
                         type: 'bar',
                         barWidth: 20,
                         itemStyle: {
                             normal: { areaStyle: { type: 'default' }, color: '#fd956a' }
                         },
-                        data: [800, 708, 920, 1090, 1200]
+                        // data: [800, 708, 920, 1090, 1200]
+                        data: type_num0
                     },
                     {
-                        name: '会生活',
+                        name: types[1],
                         type: 'bar',
                         barWidth: 20,
                         itemStyle: {
                             normal: { areaStyle: { type: 'default' }, color: '#2bb6db' }
                         },
-                        data: [400, 468, 520, 690, 800]
+                        // data: [400, 468, 520, 690, 800]
+                        data: type_num1
                     },
-                    {
-                        name: '爱旅行',
-                        type: 'bar',
-                        barWidth: 20,
-                        itemStyle: {
-                            normal: { areaStyle: { type: 'default' }, color: '#13cfd5' }
-                        },
-                        data: [500, 668, 520, 790, 900]
-                    },
-                    {
-                        name: '趣美味',
-                        type: 'bar',
-                        barWidth: 20,
-                        itemStyle: {
-                            normal: { areaStyle: { type: 'default' }, color: '#00ce68' }
-                        },
-                        data: [600, 508, 720, 890, 1000]
-                    }
+                    // {
+                    //     name: '爱旅行',
+                    //     type: 'bar',
+                    //     barWidth: 20,
+                    //     itemStyle: {
+                    //         normal: { areaStyle: { type: 'default' }, color: '#13cfd5' }
+                    //     },
+                    //     data: [500, 668, 520, 790, 900]
+                    // },
+                    // {
+                    //     name: '趣美味',
+                    //     type: 'bar',
+                    //     barWidth: 20,
+                    //     itemStyle: {
+                    //         normal: { areaStyle: { type: 'default' }, color: '#00ce68' }
+                    //     },
+                    //     data: [600, 508, 720, 890, 1000]
+                    // }
                 ],
                 grid: {
                     show: true,
