@@ -1,9 +1,9 @@
 var user = {
-    baseurl: 'http://localhost:8000',
+    // baseurl: 'http://localhost:8000',
     //登录
     login: function (name, pwd, callback) {
 
-        $.post(this.baseurl + '/admin/login', { user_name: name, password: pwd }, function (res) {
+        $.post(APIURL.login, { user_name: name, password: pwd }, function (res) {
             callback(res)
 
         })
@@ -11,14 +11,14 @@ var user = {
     },
     //退出
     logout: function (callback) {
-        $.post(this.baseurl + '/admin/logout', function (res) {
+        $.post(APIURL.logout, function (res) {
             callback(res)
 
         })
     },
     //获取用户信息
     getInfo: function (callback) {
-        $.get(this.baseurl + '/admin/getuser', function (res) {
+        $.get(APIURL.getInfo, function (res) {
             callback(res)
 
         })
@@ -26,7 +26,7 @@ var user = {
     //文章相关
     //文章数量统计
     getcontentcount: function (callback) {
-        $.get(this.baseurl + '/admin/article_count', function (res) {
+        $.get(APIURL.getcontentcount, function (res) {
             // console.log(res);
             callback(res);
 
@@ -35,13 +35,13 @@ var user = {
     },
     //文章评论统计
     getremarkcount: function (callback) {
-        $.get(this.baseurl + '/admin/comment_count', function (res) {
+        $.get(APIURL.getremarkcount, function (res) {
             callback(res)
         })
     },
     //月新增文章数
     getmonthcontentcount: function (callback) {
-        $.get(this.baseurl + '/admin/month_article_count', function (res) {
+        $.get(APIURL.getmonthcontentcount, function (res) {
             // console.log(res);
             callback(res)
         })
