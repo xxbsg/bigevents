@@ -12,6 +12,16 @@ var artcle={
         })
     },
     article_get:function(data,callback){
-        
+        $.ajax(
+            {
+                url:APIURL.article_get,
+                type:'get',
+                data:data,
+                success:function(res){
+                    callback(res)
+                }
+            }
+
+        )
     }
 }
