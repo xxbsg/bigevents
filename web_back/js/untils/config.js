@@ -13,6 +13,10 @@ var APIURL={
     addcategory:baseurl +'/admin/category_add',//新增分类
     delcategory:baseurl +'/admin/category_delete',//删除分类
     editcategory:baseurl +'/admin/category_edit',//修改分类
+
+    //文章
+    article_publish:baseurl+'/admin/article_publish',//文章发布
+    article_get:baseurl+'/admin/search',//文章获取
     
 
 
