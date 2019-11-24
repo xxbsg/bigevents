@@ -28,7 +28,7 @@
         <div class="menu">
             <div class="menu_collapse fl">
                 <a href="javascript:;" class="level_one"><i class="fa fa-list-ul"></i>全部分类</a>
-                <ul class="level_two">
+                <ul class="level_two" id='levewl_two'>
                     <li class="up"></li>
                     <li><a href="#">最 新</a></li>
                     <li><a href="#">科 技</a></li>
@@ -38,7 +38,7 @@
                     <li><a href="#">公 司</a></li>
                 </ul>
             </div>
-            <ul class="left_menu fl">
+            <ul class="left_menu fl" id='left_menu'>
                 <li><a href="#">最 新</a></li>
                 <li><a href="#">科 技</a></li>
                 <li><a href="#">股 市</a></li>
@@ -220,8 +220,23 @@
         <p>CopyRight © 2019 深圳大事件信息技术股份有限公司   All Rights Reserved</p>
         <p>电话：0755-****888    粤ICP备*******8号</p>
     </div>
+    <script src="./js/jquery-1.12.4.min.js"></script>
+    <script src="./js/template-web.js"></script>
     <script src="./js/untils/config.js"></script>
-    <script src=""></script>
+    <script src="./js/untils/category.js"></script>
+    <!-- ./article.html?id={{item.id}} -->
+    <script id='cate' type="text/html">
+        {{each data item}}
+        <li><a href="#">{{item.name}}</a></li>
+        {{/each}}
+    </script>
+    <script>
+        category.getcategory(function(res){
+            var htmlStr=template('cate',res)
+            $('#left_menu').html(htmlStr)
+            $('#levewl_two').html('<li class="up"></li>'+htmlStr)
+        })
+    </script>
 </body>
 
 </html>
