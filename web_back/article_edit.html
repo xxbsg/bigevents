@@ -116,15 +116,11 @@
             fd.append('id',id)
             fd.set('content',tinyMCE.activeEditor.getContent())
             artcle.article_edit(fd,function(res){
-                console.log(res);
-                
+                // console.log(res);
                 if(res.code==200){
-                    alert(res.msg)
-                    
-                }
-                
+                    alert(res.msg)   
+                }  
             })
-
         })
         //预览
         $('#exampleInputFile').change(function(){
