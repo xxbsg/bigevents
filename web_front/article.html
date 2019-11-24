@@ -9,6 +9,7 @@
     <link rel="stylesheet" type="text/css" href="css/reset.css">
     <link rel="stylesheet" href="css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
     <script src="./js/jquery-1.12.4.min.js"></script>
 </head>
 
@@ -205,6 +206,9 @@
     <script src="./js/dayjs/dayjs.min.js"></script>
     <script src="./js/dayjs/zh_cn.js"></script>
     <script src="./js/dayjs/relative.min.js"></script>
+
+    <script src="./js/bootstrap.min.js"></script>
+    <script src="./js/bootbox.min.js"></script>
     <script>
         dayjs.locale('zh-cn'); // 全局设置，中文
 
@@ -282,7 +286,7 @@
             var name = $('#name').val().trim()
             var content = $('#pinglun').val().trim()
             if(name==''||content==''){
-                alert('不能为空')
+                bootbox.alert("不能为空");
                 return;
             }
             comment.comment_add(name, content, id, function (res) {
