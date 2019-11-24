@@ -16,6 +16,9 @@ var APIURL={
     article_del:baseurl+'/admin/article_delete',//文章删除
     article_edit:baseurl+'/admin/article_edit',//文章编辑
 
+    //评论
+    comment_get:baseurl+'/get_comments',
+    comment_add:baseurl+'/post_comment'
     
 
 

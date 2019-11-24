@@ -85,28 +85,22 @@
             <form action="" class="comment_form">
                 <div class="form_group">
                     <label>用户名：</label>
-                    <input type="text" placeholder="请输入用户名" class="comment_name">
+                    <input type="text" placeholder="请输入用户名" class="comment_name" id='name'>
                 </div>
                 <div class="form_group">
                     <label>评论内容：</label>
-                    <textarea placeholder="请发表您的评论" class="comment_input"></textarea>
+                    <textarea placeholder="请发表您的评论" class="comment_input" id='pinglun'></textarea>
                 </div>
                 <div class="form_group">
-                    <input type="submit" name="" value="评 论" class="comment_sub"></div>
+                    <input type="button" name="" value="评 论" class="comment_sub" id='tijiao'></div>
             </form>
 
             <div class="comment_count">
                 4条评论
             </div>
 
-            <div class="comment_list_con">
-                <div class="comment_detail_list">
-                    <div class="person_pic fl">乔</div>
-                    <div class="name_time fl"><b>虚竹</b><span>4小时前</span></div>
-                    <div class="comment_text fl">
-                        遏制茅台酒价格过快上涨，多渠道供给，就不一定要买，租茅台酒也可以的，租售同权。开发共有产权茅台酒，让老百姓喝得起茅台酒，饮者有其酒。
-                    </div>
-                </div>
+            <div class="comment_list_con" id='comment_list'>
+
                 <div class="comment_detail_list">
                     <div class="person_pic fl">段</div>
                     <div class="name_time fl"><b>虚竹</b><span>4小时前</span></div>
@@ -146,11 +140,7 @@
             <div class="common_wrap">
                 <h3><i class="fa fa-commenting-o"></i> 最新评论</h3>
                 <ul class="content_list comment_list">
-                    <li>
-                        <span>山</span>
-                        <b><em>山治</em> 9个月前(08-14)说:</b>
-                        <strong>挺会玩的</strong>
-                    </li>
+
                     <li>
                         <span>丽</span>
                         <b><em>丽丽</em> 9个月前(08-14)说:9个月前(08-14)说:9个月前(08-14)说:</b>
@@ -209,11 +199,40 @@
     <script src="./js/untils/config.js"></script>
     <script src="./js/untils/artcle.js"></script>
     <script src="./js/untils/category.js"></script>
+    <script src="./js/untils/comment.js"></script>
+    <script src="./js/template-web.js"></script>
+
+    <script src="./js/dayjs/dayjs.min.js"></script>
+    <script src="./js/dayjs/zh_cn.js"></script>
+    <script src="./js/dayjs/relative.min.js"></script>
     <script>
+        dayjs.locale('zh-cn'); // 全局设置，中文
+
+        // 应用插件
+        //  格式：dayjs.extend(dayjs_plugin_插件名);
+        dayjs.extend(dayjs_plugin_relativeTime);
+    </script>
+
+    <script id='pingluns' type="text/html">
+        {{ each data item}}
+        <div class="comment_detail_list">
+                <div class="person_pic fl">{{item.name.substr(0,1)}}</div>
+                <div class="name_time fl"><b>{{item.name}}</b><span>{{item.dt}}</span></div>
+                <div class="comment_text fl">
+                    {{item.content}}
+                </div>
+            </div>
+        {{/each}}
+    </script>
+    <script>
+
+        // console.log(dayjs().add(10, 'day').format("YYYY-MM-DD dddd"))
+        // console.log(dayjs(1574590762413).toNow())
+
         var id = location.search.substring(4)
 
         article.article_get_one(id, function (res) {
-            
+
             if (res.code == 200) {
                 $('#article_title').text(res.data.title)
                 $('#author').text(res.data.author)
@@ -222,27 +241,59 @@
                 $("#content").html(res.data.content)
                 category.getcategory(function (res2) {
                     if (res2.code == 200) {
-                        
 
-                       var re= res2.data.find(function (item) {
-                          
-                           
+
+                        var re = res2.data.find(function (item) {
+
+
                             if (item.id == res.data.type) {
-                               
+
                                 return true
                             }
                         })
-                        
-                        if(re!=undefined){
+
+                        if (re != undefined) {
                             $('#type').text(re.name)
                         }
-                        
+
                     }
                 })
             }
 
         })
+        //评论显示
+        function shwoall() {
+            comment.comment_get(id, function (res) {
+                console.log(res);
+                if (res.code == 200) {
+                    res.data.forEach(function (item) {
+                        item.dt = dayjs(item.dt).toNow()
+                    })
+                    res.data.reverse()
+                    var htmlStr = template('pingluns', res)
+                    $('#comment_list').html(htmlStr)
+                }
 
+            })
+        }
+        shwoall()
+        //评论添加
+        $('#tijiao').click(function () {
+            var name = $('#name').val().trim()
+            var content = $('#pinglun').val().trim()
+            if(name==''||content==''){
+                alert('不能为空')
+                return;
+            }
+            comment.comment_add(name, content, id, function (res) {
+                if (res.code == 200) {
+                    $('#name').val('')
+                    $('#pinglun').val('')
+                    shwoall()
+                }
+
+            })
+        })
 
     </script>
 </body>
