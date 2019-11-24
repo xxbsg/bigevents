@@ -109,7 +109,7 @@
 
             <td class="text-center">
                 <a href="article_edit.html" class="btn btn-default btn-xs">编辑</a>
-                <a href="javascript:;" class="btn btn-danger btn-xs">删除</a>
+                <a href="javascript:;" data-id={{item.id}}  class="btn btn-danger btn-xs del">删除</a>
             </td>
         </tr>
         {{/each}}
@@ -124,6 +124,7 @@
     <Script>
         //获取新闻列表
         var pd=false;
+        var ddata;
         function show(data){
             artcle.article_get(data, function (res) {
             // console.log(res);
@@ -150,6 +151,7 @@
                                 // 1. 更新全局变量
                                 console.log(event,page);
                                 data.page=page
+                                ddata=data
                                 show(data)
                                 if(page!=1){
                                     pd=false
@@ -173,9 +175,20 @@
             var type=$('#selCategory').val()
             var status=$('#selStatus').val()
             pd=false
+            ddata={type:type,state:status}
             show({type:type,state:status})
         })
 
+        //删除
+        $('#news-list').on('click','.del',function(){
+            var id=$(this).attr('data-id')
+            artcle.article_del(id,function(res){
+                if(res.code==200){
+                    show(ddata)
+                }
+                
+            })
+        })
 
     </Script>
 

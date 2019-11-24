@@ -23,5 +23,10 @@ var artcle={
             }
 
         )
+    },
+    article_del:function(id,callback){
+        $.get(APIURL.article_del,{id:id},function(res){
+            callback(res)
+        })
     }
 }

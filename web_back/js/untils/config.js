@@ -17,6 +17,7 @@ var APIURL={
     //文章
     article_publish:baseurl+'/admin/article_publish',//文章发布
     article_get:baseurl+'/admin/search',//文章获取
+    article_del:baseurl+'/admin/article_delete',//文章删除
     
 
 
