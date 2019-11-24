@@ -39,6 +39,7 @@
                     <div class="col-sm-10">
                         <input type="file" id="exampleInputFile" name='cover'>
                     </div>
+                    <img src="http://img0.imgtn.bdimg.com/it/u=2695273283,3126374243&fm=26&gp=0.jpg" alt="" id='yulan'>
                 </div>
                 <div class="form-group">
                     <label for="inputEmail3" class="col-sm-2 control-label">文章类别：</label>
@@ -127,6 +128,14 @@
                 
             })
 
+        })
+        //图片预览
+        $('#exampleInputFile').change(function(){
+
+            var lujing=URL.createObjectURL($(this)[0].files[0])
+            $('#yulan').prop('src',lujing)
+            $('#yulan').css('width','300px')
+            
         })
     </script>
 </body>
