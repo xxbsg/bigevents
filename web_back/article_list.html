@@ -149,7 +149,8 @@
                                 // 点击页码：
                                 // 1. 更新全局变量
                                 console.log(event,page);
-                                show({page:page})
+                                data.page=page
+                                show(data)
                                 if(page!=1){
                                     pd=false
                                 }
@@ -171,6 +172,7 @@
         $("#btnSearch").click(function(){
             var type=$('#selCategory').val()
             var status=$('#selStatus').val()
+            pd=false
             show({type:type,state:status})
         })
 
