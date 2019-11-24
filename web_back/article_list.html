@@ -72,7 +72,7 @@
 
 
                         <td class="text-center">
-                            <a href="article_edit.html" class="btn btn-default btn-xs">编辑</a>
+                            <a href="http://www.baidu.com" class="btn btn-default btn-xs">编辑</a>
                             <a href="javascript:deleteTr( 1005 );" class="btn btn-danger btn-xs">删除</a>
                         </td>
                     </tr>
@@ -108,7 +108,7 @@
 
 
             <td class="text-center">
-                <a href="article_edit.html" class="btn btn-default btn-xs">编辑</a>
+                <a href="article_edit.html?id={{item.id}}" class="btn btn-default btn-xs" id='edit2'>编辑</a>
                 <a href="javascript:;" data-id={{item.id}}  class="btn btn-danger btn-xs del">删除</a>
             </td>
         </tr>
@@ -188,6 +188,13 @@
                 }
                 
             })
+        })
+        //编辑跳转
+        $('#edit2').click(function(e){
+            e.preventDefault()
+            console.log($(this.prop('src')));
+            
+            return;
         })
 
     </Script>

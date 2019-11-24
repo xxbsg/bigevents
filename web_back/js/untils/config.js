@@ -18,6 +18,8 @@ var APIURL={
     article_publish:baseurl+'/admin/article_publish',//文章发布
     article_get:baseurl+'/admin/search',//文章获取
     article_del:baseurl+'/admin/article_delete',//文章删除
+    article_edit:baseurl+'/admin/article_edit',//文章编辑
+
     
 
 

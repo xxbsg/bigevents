@@ -28,5 +28,17 @@ var artcle={
         $.get(APIURL.article_del,{id:id},function(res){
             callback(res)
         })
+    },
+    article_edit:function(fd,callback){
+        $.ajax({
+            url:APIURL.article_edit,
+            type:'post',
+            data:fd,
+            contentType:false,
+            processData:false,
+            success:function(res){
+                callback(res)
+            }
+        })
     }
 }
