@@ -12,4 +12,18 @@ var article = {
 
         )
     },
+    article_get_one: function ( id,callback) {
+        $.ajax(
+            {
+                url: APIURL.article_get,
+                type: 'get',
+                data: {id:id},
+                success: function (res) {
+                    callback(res)
+                }
+            }
+
+        )
+    },
+
 }
