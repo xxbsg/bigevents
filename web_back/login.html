@@ -59,7 +59,7 @@
 
     <script>
         //点击登录
-        $('#tijiao').click(function (e) {
+        $('#tijiao').click( (e)=> {
             e.preventDefault()
 
             let name = $('#myname').val().trim()
@@ -70,7 +70,7 @@
                 return;
             }
 
-            user.login(name, pwd, function (res) {
+            user.login(name, pwd,  (res)=> {
                 console.log(res);
                 if (res.code == 200) {
                     location.href = './index.html'
@@ -79,7 +79,6 @@
                     $('#myModal').modal('show')
                 }
             })
-
         })
     </script>
 </body>

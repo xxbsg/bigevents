@@ -91,7 +91,7 @@
     </script>
     <script>
         //显示所有分类
-        category.getcategory(function(res){
+        category.getcategory( (res)=>{
             if(res.code==200){
                 let htmlStr=template('cates',res)
                 $('#cateall').html(htmlStr)
@@ -99,12 +99,12 @@
             
         })
         //提交文章
-        $('#fabu').click(function(e){
+        $('#fabu').click( (e)=>{
             e.preventDefault()
             let fd=new FormData(document.querySelector('#newart'))
             fd.set('state','已发布')
             fd.set('content',tinyMCE.activeEditor.getContent())
-            artcle.article_publish(fd,function(res){
+            artcle.article_publish(fd, (res)=>{
                 console.log(res);
                 if(res.code==201){
                     alert(res.msg)
@@ -117,12 +117,12 @@
 
         })
         //存为草稿
-        $('#caogao').click(function(e){
+        $('#caogao').click( (e)=>{
             e.preventDefault()
             let fd=new FormData(document.querySelector('#newart'))
             fd.set('state','草稿')
             fd.set('content',tinyMCE.activeEditor.getContent())
-            artcle.article_publish(fd,function(res){
+            artcle.article_publish(fd, (res)=>{
                 console.log(res);
                 location.reload()
                 

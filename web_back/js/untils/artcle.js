@@ -1,42 +1,42 @@
 const artcle={
-    article_publish:function(fd,callback){
+    article_publish: (fd,callback)=>{
         $.ajax({
             url:APIURL.article_publish,
             type:'post',
             data:fd,
             contentType:false,
             processData:false,
-            success:function(res){
+            success: (res)=>{
                 callback(res)
             }
         })
     },
-    article_get:function(data,callback){
+    article_get: (data,callback)=>{
         $.ajax(
             {
                 url:APIURL.article_get,
                 type:'get',
                 data:data,
-                success:function(res){
+                success: (res)=>{
                     callback(res)
                 }
             }
 
         )
     },
-    article_del:function(id,callback){
-        $.get(APIURL.article_del,{id:id},function(res){
+    article_del: (id,callback)=>{
+        $.get(APIURL.article_del,{id:id}, (res)=>{
             callback(res)
         })
     },
-    article_edit:function(fd,callback){
+    article_edit: (fd,callback)=>{
         $.ajax({
             url:APIURL.article_edit,
             type:'post',
             data:fd,
             contentType:false,
             processData:false,
-            success:function(res){
+            success: (res)=>{
                 callback(res)
             }
         })

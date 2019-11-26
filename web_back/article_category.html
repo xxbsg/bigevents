@@ -146,7 +146,7 @@
     <script>
         //获取分类
         function show_cate() {
-            category.getcategory(function (res) {
+            category.getcategory( (res)=> {
                 // console.log(res);
                 if (res.code == 200) {
                     let htmlStr = template('fenlei', res)
@@ -157,14 +157,14 @@
         show_cate()
         //新添分类
         // category.addcategory(name,slug,)
-        $('#model_add').on('click', function () {
+        $('#model_add').on('click',  ()=> {
             let name = $('#recipient-name').val().trim()
             let slug = $('#recipient-slug').val().trim()
             if (name == '' || slug == '') {
                 alert('不能为空')
                 return
             }
-            category.addcategory(name, slug, function (res) {
+            category.addcategory(name, slug,  (res) =>{
                 console.log(res);
                 if (res.code == 200) {
                     $('#recipient-name').val('')
@@ -177,7 +177,7 @@
                 }
             })
         })
-        $('#model_shutoff').on('click', function () {
+        $('#model_shutoff').on('click',  () =>{
             $('#recipient-name').val('')
             $('#recipient-slug').val('')
             $('#addModal').modal('hide')
@@ -185,7 +185,7 @@
         //删除分类
         $('#all_fenlei').on('click', '.del-cate', function () {
             let id = $(this).attr('data-id').trim()
-            category.delcategory(id, function (res) {
+            category.delcategory(id,  (res) =>{
                 // console.log(res);
                 if (res.code = 200) {
                     show_cate()
@@ -202,7 +202,7 @@
             $('#editModal').modal('show')
 
         })
-        $('#model_shutoff_edit').on('click', function () {
+        $('#model_shutoff_edit').on('click',  ()=> {
             $('#editModal').modal('hide')
         })
         $("#model_edit").click(function () {
@@ -213,7 +213,7 @@
                 alert('不能为空')
                 return
             }
-            category.editcategory(id, name, slug, function (res) {
+            category.editcategory(id, name, slug,  (res)=> {
                 // console.log(res);
                 if (res.code == 200) {
                     $('#cate-edit-name').val('')

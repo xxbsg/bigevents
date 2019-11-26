@@ -89,7 +89,7 @@
 
         resizeFrame();
 
-        $(window).resize(function(){
+        $(window).resize( ()=>{
             resizeFrame();
         })
 
@@ -108,7 +108,7 @@
     <script src="./js/untils/user.js"></script>
     <script>
         //加载当前用户信息
-        user.getInfo(function(res){
+        user.getInfo( (res)=>{
             if (res.code == 200) {
                 // console.log(res);
 
@@ -119,8 +119,8 @@
       
 
         //退出
-        $('#tuichu').click(function(){
-            user.logout(function(res){
+        $('#tuichu').click( ()=>{
+            user.logout( (res)=>{
                 console.log(res);
                 if(res.code==200){
                     location.href='./login.html'

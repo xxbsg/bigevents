@@ -1,21 +1,21 @@
 const category={
-    getcategory:function(callback){
-        $.get(APIURL.getcategory,function(res){
+    getcategory: (callback)=>{
+        $.get(APIURL.getcategory, (res)=>{
             callback(res)
         })
     },
-    addcategory:function(name,slug,callback){
-        $.post(APIURL.addcategory,{'name':name,'slug':slug},function(res){
+    addcategory:(name,slug,callback)=>{
+        $.post(APIURL.addcategory,{'name':name,'slug':slug}, (res)=>{
             callback(res)
         })
     },
-    delcategory:function(id,callback){
-        $.post(APIURL.delcategory,{'id':id},function(res){
+    delcategory: (id,callback)=>{
+        $.post(APIURL.delcategory,{'id':id}, (res)=>{
             callback(res)
         })
     },
-    editcategory:function(id,name,slug,callback){
-        $.post(APIURL.editcategory,{'id':id,'name':name,'slug':slug},function(res){
+    editcategory: (id,name,slug,callback)=>{
+        $.post(APIURL.editcategory,{'id':id,'name':name,'slug':slug}, (res)=>{
             callback(res)
         })
     }
