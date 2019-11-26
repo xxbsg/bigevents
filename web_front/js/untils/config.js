@@ -1,5 +1,5 @@
-var baseurl='http://localhost:8000'
-var APIURL={
+const baseurl='http://localhost:8000'
+const APIURL={
     getcontentcount:baseurl + '/admin/article_count',
     getremarkcount:baseurl + '/admin/comment_count',
     getmonthcontentcount:baseurl + '/admin/month_article_count',

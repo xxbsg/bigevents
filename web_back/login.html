@@ -53,13 +53,13 @@
             </div>
         </div>
     </div>
-    
+
     <script src="./js/bootstrap/js/bootstrap.min.js"></script>
     <script src="./js/untils/user.js"></script>
 
     <script>
         //点击登录
-        $('#tijiao').click( (e)=> {
+        $('#tijiao').click((e) => {
             e.preventDefault()
 
             let name = $('#myname').val().trim()
@@ -70,7 +70,7 @@
                 return;
             }
 
-            user.login(name, pwd,  (res)=> {
+            user.login(name, pwd, (res) => {
                 console.log(res);
                 if (res.code == 200) {
                     location.href = './index.html'

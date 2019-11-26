@@ -233,9 +233,9 @@
         // console.log(dayjs().add(10, 'day').format("YYYY-MM-DD dddd"))
         // console.log(dayjs(1574590762413).toNow())
 
-        var id = location.search.substring(4)
+        let id = location.search.substring(4)
 
-        article.article_get_one(id, function (res) {
+        article.article_get_one(id,  (res) =>{
 
             if (res.code == 200) {
                 $('#article_title').text(res.data.title)
@@ -243,11 +243,11 @@
                 $('#date').text(res.data.date)
                 // 
                 $("#content").html(res.data.content)
-                category.getcategory(function (res2) {
+                category.getcategory( (res2)=> {
                     if (res2.code == 200) {
 
 
-                        var re = res2.data.find(function (item) {
+                        let re = res2.data.find( (item)=> {
 
 
                             if (item.id == res.data.type) {
@@ -267,14 +267,14 @@
         })
         //评论显示
         function shwoall() {
-            comment.comment_get(id, function (res) {
+            comment.comment_get(id,  (res)=> {
                 console.log(res);
                 if (res.code == 200) {
-                    res.data.forEach(function (item) {
+                    res.data.forEach( (item) =>{
                         item.dt = dayjs(item.dt).toNow()
                     })
                     res.data.reverse()
-                    var htmlStr = template('pingluns', res)
+                    let htmlStr = template('pingluns', res)
                     $('#comment_list').html(htmlStr)
                 }
 
@@ -282,14 +282,14 @@
         }
         shwoall()
         //评论添加
-        $('#tijiao').click(function () {
-            var name = $('#name').val().trim()
-            var content = $('#pinglun').val().trim()
+        $('#tijiao').click( () =>{
+            let name = $('#name').val().trim()
+            let content = $('#pinglun').val().trim()
             if(name==''||content==''){
                 bootbox.alert("不能为空");
                 return;
             }
-            comment.comment_add(name, content, id, function (res) {
+            comment.comment_add(name, content, id,  (res) =>{
                 if (res.code == 200) {
                     $('#name').val('')
                     $('#pinglun').val('')

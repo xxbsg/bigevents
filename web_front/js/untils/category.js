@@ -1,6 +1,6 @@
-var category={
-    getcategory:function(callback){
-        $.get(APIURL.getcategory,function(res){
+const category={
+    getcategory: (callback)=>{
+        $.get(APIURL.getcategory, (res)=>{
             callback(res)
         })
     },

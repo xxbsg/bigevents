@@ -244,16 +244,16 @@
         {{/each}}
     </script>
     <script>
-        category.getcategory(function(res){
-            var htmlStr=template('cate',res)
+        category.getcategory( (res)=>{
+            let htmlStr=template('cate',res)
             $('#left_menu').html(htmlStr)
             $('#levewl_two').html('<li class="up"></li>'+htmlStr)
         })
-        article.article_get_focus(function(res){
+        article.article_get_focus( (res)=>{
             console.log(res);
             
             if(res.code==200){
-                var htmlStr=template('focus1',res)
+                let htmlStr=template('focus1',res)
                 // console.log(res);
                 $('#focuss').html(htmlStr)
                 

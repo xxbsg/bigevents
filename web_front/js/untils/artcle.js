@@ -1,24 +1,24 @@
-var article = {
-    article_get_focus: function ( callback) {
+const article = {
+    article_get_focus:  ( callback)=> {
         $.ajax(
             {
                 url: APIURL.article_get,
                 type: 'get',
                 data: {state:'已发布',perpage:5},
-                success: function (res) {
+                success:  (res)=> {
                     callback(res)
                 }
             }
 
         )
     },
-    article_get_one: function ( id,callback) {
+    article_get_one:  ( id,callback) =>{
         $.ajax(
             {
                 url: APIURL.article_get,
                 type: 'get',
                 data: {id:id},
-                success: function (res) {
+                success:  (res) =>{
                     callback(res)
                 }
             }
