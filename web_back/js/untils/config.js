@@ -1,5 +1,5 @@
-var baseurl='http://localhost:8000'
-var APIURL={
+const baseurl='http://localhost:8000'
+const APIURL={
     login:baseurl + '/admin/login',
     logout:baseurl + '/admin/logout',
     getInfo:baseurl + '/admin/getuser',

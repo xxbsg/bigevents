@@ -1,4 +1,4 @@
-var artcle={
+const artcle={
     article_publish:function(fd,callback){
         $.ajax({
             url:APIURL.article_publish,

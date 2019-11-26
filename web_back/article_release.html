@@ -93,7 +93,7 @@
         //显示所有分类
         category.getcategory(function(res){
             if(res.code==200){
-                var htmlStr=template('cates',res)
+                let htmlStr=template('cates',res)
                 $('#cateall').html(htmlStr)
             }
             
@@ -101,7 +101,7 @@
         //提交文章
         $('#fabu').click(function(e){
             e.preventDefault()
-            var fd=new FormData(document.querySelector('#newart'))
+            let fd=new FormData(document.querySelector('#newart'))
             fd.set('state','已发布')
             fd.set('content',tinyMCE.activeEditor.getContent())
             artcle.article_publish(fd,function(res){
@@ -119,7 +119,7 @@
         //存为草稿
         $('#caogao').click(function(e){
             e.preventDefault()
-            var fd=new FormData(document.querySelector('#newart'))
+            let fd=new FormData(document.querySelector('#newart'))
             fd.set('state','草稿')
             fd.set('content',tinyMCE.activeEditor.getContent())
             artcle.article_publish(fd,function(res){
@@ -132,7 +132,7 @@
         //图片预览
         $('#exampleInputFile').change(function(){
 
-            var lujing=URL.createObjectURL($(this)[0].files[0])
+            let lujing=URL.createObjectURL($(this)[0].files[0])
             $('#yulan').prop('src',lujing)
             $('#yulan').css('width','300px')
             

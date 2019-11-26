@@ -62,8 +62,8 @@
         $('#tijiao').click(function (e) {
             e.preventDefault()
 
-            var name = $('#myname').val().trim()
-            var pwd = $('#mypwd').val().trim()
+            let name = $('#myname').val().trim()
+            let pwd = $('#mypwd').val().trim()
             if (name == '' || pwd == '') {
                 $('#mycont').text('不允许为空')
                 $('#myModal').modal('show')

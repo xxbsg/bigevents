@@ -1,4 +1,4 @@
-var user = {
+const user = {
     // baseurl: 'http://localhost:8000',
     //登录
     login: function (name, pwd, callback) {

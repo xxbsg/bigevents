@@ -91,11 +91,11 @@
     <script>
         //显示分类
         category.getcategory(function (res) {
-            var htmlStr = template('catelist', res)
+            let htmlStr = template('catelist', res)
             $('#cates').html(htmlStr)
         })
         // var str=JSON.parse()
-        var id = location.search.split('=')[1];
+        let id = location.search.split('=')[1];
         artcle.article_get({ id: id }, function (res) {
             if (res.code == 200) {
                 console.log(res);
@@ -112,7 +112,7 @@
         })
         //保存
         $('#save').click(function(){
-            var fd=new FormData($('#myform')[0])
+            let fd=new FormData($('#myform')[0])
             fd.append('id',id)
             fd.set('content',tinyMCE.activeEditor.getContent())
             artcle.article_edit(fd,function(res){
@@ -124,7 +124,7 @@
         })
         //预览
         $('#exampleInputFile').change(function(){
-            var lujing=URL.createObjectURL($(this)[0].files[0])
+            let lujing=URL.createObjectURL($(this)[0].files[0])
             $('#yulan').prop('src',lujing)
             
         })

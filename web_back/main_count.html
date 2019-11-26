@@ -72,8 +72,8 @@
         })
         //实现折现图展示
         function zhexiantu(aList_all) {
-            var oChart = echarts.init(document.getElementById('curve_show'));
-            // var aList_all = [
+            let oChart = echarts.init(document.getElementById('curve_show'));
+            // let aList_all = [
             //     { 'count': 36, 'date': '2019-04-13' },
             //     { 'count': 52, 'date': '2019-04-14' },
             //     { 'count': 78, 'date': '2019-04-15' },
@@ -109,12 +109,12 @@
             let aCount = [];
             let aDate = [];
 
-            for (var i = 0; i < aList_all.length; i++) {
+            for (let i = 0; i < aList_all.length; i++) {
                 aCount.push(aList_all[i].day_count);
                 aDate.push(aList_all[i].day);
             }
 
-            var chartopt = {
+            let chartopt = {
                 title: {
                     text: '月新增文章数',
                     left: 'center',
@@ -190,10 +190,10 @@
         //各类型文章数量统计--饼状图
         user.getcontent_category_count(function (res) {
             if (res.code == 200) {
-                var types = res.data.map(function (item) {
+                let types = res.data.map(function (item) {
                     return item.type
                 })
-                var datas = res.data.map(function (item) {
+                let datas = res.data.map(function (item) {
                     return { value: item.all_count, name: item.type }
                 })
                 // console.log('类型', types);
@@ -204,8 +204,8 @@
         })
         //实现饼状图展示
         function bingzhuangtu(types, datas) {
-            var oPie = echarts.init(document.getElementById('pie_show'));
-            var oPieopt =
+            let oPie = echarts.init(document.getElementById('pie_show'));
+            let oPieopt =
             {
                 title: {
                     top: 10,
@@ -270,16 +270,16 @@
         $.get('http://localhost:8000/admin/article_category_visit', function (res) {
             console.log(res);
             if (res.code == 200) {
-                var types=res.data[0].all_count.map(function(item){
+                let types=res.data[0].all_count.map(function(item){
                     return item.type
                 })
-                var months=res.data.map(function(item){
+                let months=res.data.map(function(item){
                     return item.month
                 })
                 
-                var type_num0=res.data.map(function(item,index,arr){
-                    // for(var i=0;i<item.length;i++){
-                    //     var aa=arr.map(function(itt){
+                let type_num0=res.data.map(function(item,index,arr){
+                    // for(let i=0;i<item.length;i++){
+                    //     let aa=arr.map(function(itt){
                     //         return item.all_count[i].count
                     //     })
                     //     console.log(aa);
@@ -287,7 +287,7 @@
                     // }
                     return item.all_count[0].count
                 })
-                var type_num1=res.data.map(function(item,index,arr){
+                let type_num1=res.data.map(function(item,index,arr){
                     return item.all_count[1].count
                 })
 
@@ -301,8 +301,8 @@
 
         //柱状图
         function zhuzhuangtu(type_num0,type_num1,types,months) {
-            var oColumn = this.echarts.init(document.getElementById('column_show'));
-            var oColumnopt =
+            let oColumn = this.echarts.init(document.getElementById('column_show'));
+            let oColumnopt =
             {
                 title: {
                     text: '文章访问量',

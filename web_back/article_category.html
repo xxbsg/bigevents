@@ -149,7 +149,7 @@
             category.getcategory(function (res) {
                 // console.log(res);
                 if (res.code == 200) {
-                    var htmlStr = template('fenlei', res)
+                    let htmlStr = template('fenlei', res)
                     $('#all_fenlei').html(htmlStr)
                 }
             })
@@ -158,8 +158,8 @@
         //新添分类
         // category.addcategory(name,slug,)
         $('#model_add').on('click', function () {
-            var name = $('#recipient-name').val().trim()
-            var slug = $('#recipient-slug').val().trim()
+            let name = $('#recipient-name').val().trim()
+            let slug = $('#recipient-slug').val().trim()
             if (name == '' || slug == '') {
                 alert('不能为空')
                 return
@@ -184,7 +184,7 @@
         })
         //删除分类
         $('#all_fenlei').on('click', '.del-cate', function () {
-            var id = $(this).attr('data-id').trim()
+            let id = $(this).attr('data-id').trim()
             category.delcategory(id, function (res) {
                 // console.log(res);
                 if (res.code = 200) {
@@ -206,9 +206,9 @@
             $('#editModal').modal('hide')
         })
         $("#model_edit").click(function () {
-            var name = $('#cate-edit-name').val().trim()
-            var slug = $('#cate-edit-slug').val().trim()
-            var id = $(this).attr('data-id').trim()
+            let name = $('#cate-edit-name').val().trim()
+            let slug = $('#cate-edit-slug').val().trim()
+            let id = $(this).attr('data-id').trim()
             if (name == '' || slug == '' || id == '') {
                 alert('不能为空')
                 return

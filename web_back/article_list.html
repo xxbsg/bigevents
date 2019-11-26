@@ -123,13 +123,13 @@
     </script>
     <Script>
         //获取新闻列表
-        var pd=false;
-        var ddata;
+        let pd=false;
+        let ddata;
         function show(data){
             artcle.article_get(data, function (res) {
             // console.log(res);
             if (res.code == 200) {
-                var htmlStr = template('new-one', res)
+                let htmlStr = template('new-one', res)
                 
                 
                 $('#news-list').html(htmlStr)
@@ -167,13 +167,13 @@
         show({})
         //显示分类
         category.getcategory(function (res) {
-            var htmlStr = template('catelist', res)
+            let htmlStr = template('catelist', res)
             $('#selCategory').html(htmlStr)
         })
         //筛选
         $("#btnSearch").click(function(){
-            var type=$('#selCategory').val()
-            var status=$('#selStatus').val()
+            let type=$('#selCategory').val()
+            let status=$('#selStatus').val()
             pd=false
             ddata={type:type,state:status}
             show({type:type,state:status})
@@ -181,7 +181,7 @@
 
         //删除
         $('#news-list').on('click','.del',function(){
-            var id=$(this).attr('data-id')
+            let id=$(this).attr('data-id')
             artcle.article_del(id,function(res){
                 if(res.code==200){
                     show(ddata)
